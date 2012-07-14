@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+    create new conversation
+    <form action="." method="post" accept-charset="utf-8">{% csrf_token %}
+        {{ form.as_p }}
+
+        <p><input type="submit" value="Create"></p>
+    </form>
+    join conversation
+    <ul>
+        {% for conversation in conversations %}
+            <li><a href="/conversations/{{ conversation.id }}">{{ conversation }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock body %}

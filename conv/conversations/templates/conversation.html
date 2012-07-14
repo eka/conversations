@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+    messages
+    <p>last: {{conversation.last_message}}</p>
+    <ul>
+        {% for message in conversation.messages.all %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    message:
+    <form action="." method="post" accept-charset="utf-8">{% csrf_token %}
+        {{ form.as_p }}
+
+        <p><input type="submit" value="Send"></p>
+    </form>
+
+{% endblock body %}
